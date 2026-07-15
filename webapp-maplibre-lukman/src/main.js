@@ -10,8 +10,8 @@ document.body.appendChild(mapElement);
 const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
-  center: [106.67, -6.47],
-  zoom: 3
+  center: [106.87, -6.27],
+  zoom: 8
 });
 
 // const data = {
@@ -36,7 +36,7 @@ const map = new Map({
 map.on('load', () => {
   map.addSource('kota', {
   type: "geojson",
-  data: naturalEarthData
+  data: "https://geoserver.mapid.io/layers_new/get_layer?api_key=c494ce7989904143b75ff83b8efca84e&layer_id=6a33fa79d56af8dd1e0d04ca&project_id=6a2ffbe66684a940bdb0904a"
 });
 
 map.addLayer({
