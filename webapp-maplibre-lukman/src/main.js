@@ -1,4 +1,7 @@
 import { Map } from 'maplibre-gl';
+import naturalEarthData from "./data/ne.geojson?url";
+
+
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
 mapElement.style.height = "300px";
@@ -11,29 +14,29 @@ const map = new Map({
   zoom: 3
 });
 
-const data = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "jakarta"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.7083661,
-          -6.2275841
-        ]
-      }
-    }
-  ]
-}
+// const data = {
+//   "type": "FeatureCollection",
+//   "features": [
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "name": "jakarta"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           106.7083661,
+//           -6.2275841
+//         ]
+//       }
+//     }
+//   ]
+// }
 
 map.on('load', () => {
   map.addSource('kota', {
   type: "geojson",
-  data: data
+  data: naturalEarthData
 });
 
 map.addLayer({
@@ -42,7 +45,7 @@ map.addLayer({
   source: 'kota',
   paint: {
     "circle-radius": 5,
-    "circle-color": '#FF0000',
+    "circle-color": 'yellow',
     "circle-stroke-width": 1,
     "circle-stroke-color": 'black'
   }
