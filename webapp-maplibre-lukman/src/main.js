@@ -2,7 +2,8 @@ import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addKotaLayer , addPulauLayer} from './layers/vektor';
 import { addPatrickImage } from './layers/raster';
-import {addAttribution} from './controls/basicControls';
+import { addAttribution } from './controls/basicControls';
+import { LogoHondaControl } from './controls/customLogoControls';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -27,7 +28,9 @@ map.on('load', () => {
 
 // controls settings
 addAttribution(map, "Natural Earth Dataset, Nickelodeon");
-map.addControl(new FullscreenControl(), 'top-right');
-map.addControl(new GlobeControl(), 'top-left');
+map.addControl(new FullscreenControl());
+map.addControl(new GlobeControl());
 map.addControl(new LogoControl({compact: false}), 'bottom-left');
+map.addControl(new LogoHondaControl(), 'top-left');
+
 });

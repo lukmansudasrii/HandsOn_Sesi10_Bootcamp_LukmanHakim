@@ -2,6 +2,7 @@ import { Map } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { addKotaLayer, addPulauLayer } from '../../layers/vektor';
 import { addAttribution } from '../../controls/basicControls';
+import { LogoHondaControl } from '../../controls/customLogoControls';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -23,6 +24,7 @@ map.on("load", () => {
   addPulauLayer(map);
 
 addAttribution(map, "Natural Earth");
+map.addControl(new LogoHondaControl(), 'top-left');
 
 
 });
