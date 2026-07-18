@@ -1,6 +1,5 @@
 import { Map } from 'maplibre-gl';
-import naturalEarthData from "./data/ne.geojson?url";
-import areaData from "./data/area.geojson?url";
+import {addKotaLayer , addPulauLayer} from './layers/vektor';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -33,45 +32,13 @@ const map = new Map({
 //   ]
 // }
 
+
+
 map.on('load', () => {
+  addKotaLayer(map);
+  addPulauLayer(map);
 
-  // layer vektor titik
-  map.addSource('kota', {
-  type: "geojson",
-  data: naturalEarthData
-});
-
-map.addLayer({
-  id: 'titik-kota',
-  type: 'circle',
-  source: 'kota',
-  paint: {
-    "circle-radius": 5,
-    "circle-color": 'yellow',
-    "circle-stroke-width": 1,
-    "circle-stroke-color": 'black'
-  }
-})
-
-// layer vektor polygon
-map.addSource('pulau', {
-  type: "geojson",
-  data: areaData
-})
-
-map.addLayer({
-  id: 'area-pulau',
-  type: 'fill',
-  source: 'pulau',
-  paint: {
-    "fill-color": 'orange',
-    "fill-opacity": 0.6,
-    "fill-outline-color": 'black'
-
-  }
-});
-
-// layer raster
+  // layer raster
 map.addSource('patrick', {
   type: 'image',
   url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9voz-syNvxLl8OpsgnOtz_7WCNNiPCl5bI7RHgOrJNA&s=10',
@@ -88,5 +55,4 @@ map.addLayer({
   type: 'raster',
   source: 'patrick',
 })
-
 });
