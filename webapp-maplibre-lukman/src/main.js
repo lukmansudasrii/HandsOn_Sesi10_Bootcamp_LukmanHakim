@@ -1,4 +1,4 @@
-import { Map } from 'maplibre-gl';
+import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addKotaLayer , addPulauLayer} from './layers/vektor';
 import { addPatrickImage } from './layers/raster';
@@ -24,6 +24,10 @@ map.on('load', () => {
   addPulauLayer(map);
   addPatrickImage(map);
 
-addAttribution(map, "Natural Earth Dataset, Nickelodeon");
 
+// controls settings
+addAttribution(map, "Natural Earth Dataset, Nickelodeon");
+map.addControl(new FullscreenControl(), 'top-right');
+map.addControl(new GlobeControl(), 'top-left');
+map.addControl(new LogoControl({compact: false}), 'bottom-left');
 });
