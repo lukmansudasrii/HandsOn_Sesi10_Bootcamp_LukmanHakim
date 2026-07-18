@@ -1,5 +1,5 @@
 import { Map } from 'maplibre-gl';
-import {addKotaLayer , addPulauLayer} from './layers/vektor';
+import { addKotaLayer, addPulauLayer } from '../../layers/vektor';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -9,12 +9,11 @@ document.body.appendChild(mapElement);
 const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
-  center: [106.87, -6.27],
-  zoom: 3
-})
+  center: [0, 0],
+  zoom: 1
+});
 
-map.on('load', () => {
+map.on("load", () => {
   addKotaLayer(map);
   addPulauLayer(map);
-
 });

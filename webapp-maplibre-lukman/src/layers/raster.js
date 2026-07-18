@@ -1,4 +1,4 @@
-// layer raster
+export function addPatrickImage(map) {
 map.addSource('patrick', {
   type: 'image',
   url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9voz-syNvxLl8OpsgnOtz_7WCNNiPCl5bI7RHgOrJNA&s=10',
@@ -15,3 +15,5 @@ map.addLayer({
   type: 'raster',
   source: 'patrick',
 })
+
+};
