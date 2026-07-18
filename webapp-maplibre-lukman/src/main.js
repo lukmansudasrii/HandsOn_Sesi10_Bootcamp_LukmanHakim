@@ -1,6 +1,8 @@
 import { Map } from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import {addKotaLayer , addPulauLayer} from './layers/vektor';
 import { addPatrickImage } from './layers/raster';
+import {addAttribution} from './controls/basicControls';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -11,31 +13,17 @@ const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
   center: [106.83, -6.19],
-  zoom: 3
+  zoom: 2,
+  attributionControl: false
 });
 
-// const data = {
-//   "type": "FeatureCollection",
-//   "features": [
-//     {
-//       "type": "Feature",
-//       "properties": {
-//         "name": "jakarta"
-//       },
-//       "geometry": {
-//         "type": "Point",
-//         "coordinates": [
-//           106.7083661,
-//           -6.2275841
-//         ]
-//       }
-//     }
-//   ]
-// }
 
 
 map.on('load', () => {
   addKotaLayer(map);
   addPulauLayer(map);
   addPatrickImage(map);
+
+addAttribution(map, "Natural Earth Dataset, Nickelodeon");
+
 });
